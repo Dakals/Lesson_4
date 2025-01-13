@@ -1,7 +1,7 @@
 from PIL import Image
 
 image = Image.open("monro.jpg")
-shift = 30
+shift = 50
 
 red, green, blue = image.split()
 
@@ -20,7 +20,7 @@ image_blend_blue = Image.blend(cropped_blue, cropped_blue_middle, 0.5)
 coordinates = (shift/2, 0, image.width - shift/2, image.height)
 cropped_green = green.crop(coordinates)
 
-image_final = Image.merge('RGB', (image_blend_red, image_blend_blue, cropped_green))
+image_final = Image.merge('RGB', (image_blend_red, cropped_green, image_blend_blue))
 image_final.save('image_final.jpg')
 image_final.thumbnail((80, 80))
 image_final.save('image_final_avatar.jpg')
